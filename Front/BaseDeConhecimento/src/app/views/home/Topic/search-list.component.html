@@ -1,0 +1,36 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+  <mat-checkbox class="check-box" (click)="checkBox()" [(ngModel)]="status">Mostrar topicos inativos</mat-checkbox>
+
+  <div class="search-container form-group" align="center">
+
+    <input type="text" class="form-control" placeholder="Pesquisar" [(ngModel)]="searchText">
+
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">titulo</th>
+        <th scope="col">categoria</th>
+        <th scope="col">data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let topico of listTopics | searchFilter:  searchText;  ">
+        <td>{{topico.titulo}}</td>
+        <td>{{topico.categoria.nome}}</td>
+        <td>{{topico.data}}</td>
+        <td><button mat-icon-button color="primary" (click)="view(topico)">
+            <mat-icon>visibility</mat-icon>
+          </button></td>
+        <td><button mat-icon-button color="primary" aria-label="Example icon button with a home icon"
+            (click)="edit(topico.id)">
+            <mat-icon>edit</mat-icon>
+          </button></td>
+
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>

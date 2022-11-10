@@ -1,0 +1,19 @@
+.mat-elevation-z8{
+    width: 100%;
+}
+
+.search-container{
+    height: 85%;
+    width: 100%;
+}    
+
+.search-container form{
+    width: 30%;
+    
+}
+
+.search-container input{
+    padding: 0.5em;
+    width: 100%;
+    text-align: center;
+}

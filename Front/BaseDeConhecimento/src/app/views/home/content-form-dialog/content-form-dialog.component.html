@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>{{id!==null? 'editando o ':'incluindo '}}Tópico</h1>
+<div mat-dialog-content>
+  <form class="exemple-form" [formGroup]="topicForm">
+    
+    <mat-form-field appearance="fill" style="width: 450px ;">
+      <mat-label>Nome do Tópico</mat-label>
+      <input matInput formControlName="titulo" name="titulo">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 450px ;">
+      <mat-label>Selecione a categoria</mat-label>
+      <mat-select formControlName="categoria" name="categoria" disableRipple>
+        <mat-option *ngFor="let categoria of listCategoria" [value]="categoria">
+          {{categoria.nome}}
+        </mat-option>
+       
+      </mat-select>
+    </mat-form-field>
+
+    <div>
+        <mat-form-field appearance="fill" style="width: 450px ;">
+          <mat-label>Data do tópico</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="data" name="data">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    
+
+    <mat-form-field [style.fontSize]="16" appearance="fill" style="width: 450px ;">
+      <mat-label>Conteúdo</mat-label>
+      <textarea formControlName="conteudo" name="conteudo"
+                 matInput
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+
+    <mat-slide-toggle *ngIf="id!=null" formControlName="status" name="status" color="primary" (change)="ngOnChanges()">Ativar Topico</mat-slide-toggle>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="CreateForm()">Salvar</button>
+  <button mat-button (click)="Cancelar()">Cancelar</button>
+</div>
